@@ -4,23 +4,23 @@ import ReactDOM from 'react-dom/client';
 
 function renderPlacesPage(body) {
 	return (
-		<div class="bg-white p-8 rounded-md w-full">
-					<div class=" flex items-center justify-between pb-6">
+		<div className="bg-white p-8 rounded-md w-full">
+					<div className=" flex items-center justify-between pb-6">
 						<div>
-							<h2 class="text-4xl text-gray-600 font-semibold">Places</h2>
+							<h2 className="text-4xl text-gray-600 font-semibold">Places</h2>
 						</div>
-						<div class="flex items-center justify-between">
-							<div class="flex bg-gray-50 items-center p-2 rounded-md">
-								<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+						<div className="flex items-center justify-between">
+							<div className="flex bg-gray-50 items-center p-2 rounded-md">
+								<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
 									fill="currentColor">
-									<path fill-rule="evenodd"
+									<path 
 										d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-										clip-rule="evenodd" />
+										/>
 								</svg>
 								<input class="bg-gray-50 outline-none ml-1 block " type="text" name="" id="" placeholder="search..."/>
 							</div>
-							<div class="lg:ml-40 ml-10 space-x-8">
-								<button class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">New Log</button>
+							<div className="lg:ml-40 ml-10 space-x-8">
+								<button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">New Log</button>
 							</div>
 
 						</div>
@@ -48,7 +48,13 @@ function PlacesList(props) {
         console.error("Error fetching places:", error);
         setLoading(false); // Stop loading if there is an error
       });
-  }, []);
+  }, [searchTerm]);
+const onSearchTextChange = (e)=>{
+		console.log('onSearchTextChange executed');
+		setLoading(true);
+		setSearchTerm(e.target.value);
+		
+	}
 
   const loadingSection = <div>Loading...</div>;
 	
@@ -57,8 +63,8 @@ function PlacesList(props) {
 
   const dataSection = (
 		<div>
-			<div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-				<div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+			<div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+				<div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
 
 					<table className="min-w-full leading-normal">
 						<thead>
